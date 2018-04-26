@@ -5,6 +5,16 @@ import "bufio"
 import "os"
 
 type game struct {
+	one room
+	two room
+	three room
+	four room
+	five room
+	six room
+	seven room
+	eight room
+	nine room
+	ten room
 	currentRoom room
 	currentPlayer player
 }
@@ -21,6 +31,21 @@ type room struct {
 	right *room
 	description string
 	name string
+}
+
+func loadGame(character player) game {
+	one := room{}
+	two := room{}
+	three := room{}
+	four := room{}
+	five := room{}
+	six := room{}
+	seven := room{}
+	eight := room{}
+	nine := room{}
+	ten := room{}
+	c := room{}
+	return game{one, two, three, four, five, six, seven, eight, nine, ten, c, character}
 }
 
 func loadPlayer() player {
@@ -47,5 +72,6 @@ func loadPlayer() player {
 
 func main() {
 	character := loadPlayer()
-	fmt.Print(character.name)
+	game := loadGame(character)
+	fmt.Println(game.currentRoom)
 }
