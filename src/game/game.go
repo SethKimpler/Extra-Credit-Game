@@ -25,12 +25,12 @@ type player struct {
 }
 
 type room struct {
+	name string
+	description string
 	up *room
 	down *room
 	left *room
 	right *room
-	description string
-	name string
 }
 
 func loadGame(character player) game {
