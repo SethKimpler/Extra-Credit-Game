@@ -25,6 +25,7 @@ type player struct {
 }
 
 type room struct {
+	identifier int
 	name string
 	description string
 	up *room
@@ -35,16 +36,26 @@ type room struct {
 
 func loadGame(character player) game {
 	one := room{}
+	one.identifier = 1
 	two := room{}
+	two.identifier = 2
 	three := room{}
+	three.identifier = 3
 	four := room{}
+	four.identifier = 4
 	five := room{}
+	five.identifier = 5
 	six := room{}
+	six.identifier = 6
 	seven := room{}
+	seven.identifier = 7
 	eight := room{}
+	eight.identifier = 8
 	nine := room{}
+	nine.identifier = 9
 	ten := room{}
-	c := room{}
+	ten.identifier = 10
+	c := one
 	return game{one, two, three, four, five, six, seven, eight, nine, ten, c, character}
 }
 
