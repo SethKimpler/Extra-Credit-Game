@@ -94,6 +94,8 @@ func playGame(g game) {
 	//scanner := bufio.NewRead(os.Stdin)
 	fmt.Println("Current Room: " + g.currentRoom.name)
 	fmt.Println("Description: " + g.currentRoom.description)
+	
+	//Figure out how to concatinate this
 	//fmt.Println("Exits: Up-"  g.currentRoom.up  " Down-"  g.currentRoom.down)
 	//fmt.Println("Left-"  g.currentRoom.left  "Right-"  g.currentRoom.right)
 }
