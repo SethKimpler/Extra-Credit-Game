@@ -54,29 +54,49 @@ func loadGame(character player) game {
 	nine := room{9, "Nine", "", &six, nil, &eight, nil}
 	ten := room{10, "Ten", "", &seven, nil, &nine, nil}
 	c := room{}
-	one.right = &five
+
 	one.identifier = 1
+	one.description = "Room one"
+	one.right = &five
+
 	two.identifier = 2
+	two.description = "Room two"
 	two.right = &three
 	two.down = &five
+
 	three.identifier = 3
+	three.description = "Room three"
 	three.right = &four
 	three.down = &six
+
 	four.identifier = 4
+	four.description = "Room four"
 	four.down = &seven
+
 	five.identifier = 5
+	five.description = "Room five"
 	five.right = &six
 	five.down = &eight
+
 	six.identifier = 6
+	six.description = "Room six"
 	six.right = &seven
 	six.down = &nine
+
 	seven.identifier = 7
+	seven.description = "Room seven"
 	seven.down = &ten
+
 	eight.identifier = 8
+	eight.description = "Room eight"
 	eight.right = &nine
+
 	nine.identifier = 9
+	nine.description = "Room nine"
 	nine.right = &ten
+
 	ten.identifier = 10
+	ten.description = "Room ten"
 	c = one
 	return game{one, two, three, four, five, six, seven, eight, nine, ten, c, character, false}
 }
@@ -97,6 +117,7 @@ func loadPlayer() player {
 			name = confirm
 		}
 	}
+	fmt.Println("")
 
 	character := player{name, 100, ""}
 	fmt.Println("Congratulations on creating your character!")
@@ -122,6 +143,8 @@ func playGame(g game) {
 		if g.currentRoom.left != nil {
 			fmt.Println("Left-" + g.currentRoom.left.name)
 		}
+		fmt.Println("")
+		fmt.Println("Use R, L, U, D to move")
 
 		fmt.Print("Enter your next move: ")
 		input, _ := scanner.ReadString('\n')
