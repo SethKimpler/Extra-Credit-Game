@@ -17,6 +17,7 @@ type game struct {
 	ten room
 	currentRoom room
 	currentPlayer player
+	win bool
 }
 
 type player struct {
@@ -64,8 +65,7 @@ func loadGame(character player) game {
 	eight.identifier = 8
 	nine.identifier = 9
 	ten.identifier = 10
-	c = one
-	return game{one, two, three, four, five, six, seven, eight, nine, ten, c, character}
+	return game{one, two, three, four, five, six, seven, eight, nine, ten, c, character, false}
 }
 
 func loadPlayer() player {
@@ -91,18 +91,40 @@ func loadPlayer() player {
 }
 
 func playGame(g game) {
-	//scanner := bufio.NewRead(os.Stdin)
-	fmt.Println("Current Room: " + g.currentRoom.name)
-	fmt.Println("Description: " + g.currentRoom.description)
-	
-	//Figure out how to concatinate this
-	//fmt.Println("Exits: Up-"  g.currentRoom.up  " Down-"  g.currentRoom.down)
-	//fmt.Println("Left-"  g.currentRoom.left  "Right-"  g.currentRoom.right)
+	scanner := bufio.NewReader(os.Stdin)
+	for g.win == false {
+		fmt.Println("Current Room: " + g.currentRoom.name)
+		fmt.Println("Description: " + g.currentRoom.description)
+		fmt.Println("")
+		fmt.Println("Exits: ")
+		if g.currentRoom.up != nil {
+			fmt.Println("Up-" + g.currentRoom.up.name)
+		}
+		if g.currentRoom.right != nil {
+			fmt.Println("Right-" + g.currentRoom.right.name)
+		}
+		if g.currentRoom.down != nil {
+			fmt.Println("Down-" + g.currentRoom.down.name)
+		}
+		if g.currentRoom.left != nil {
+			fmt.Println("Left-" + g.currentRoom.left.name)
+		}
+
+		fmt.Print("Enter your next move: ")
+		input, _ := scanner.ReadString('\n')
+		switch input {
+		case "U":
+			if g.currentRoom.up != nil {
+				//How do I make current room point to this?
+				//g.currentRoom = g.currentRoom.up
+			}
+		}
+	}
 }
 
 func main() {
+	fmt.Println("\n\n")
 	character := loadPlayer()
 	game := loadGame(character)
-	fmt.Println(game.currentRoom.name)
 	playGame(game)
 }
