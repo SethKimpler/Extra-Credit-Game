@@ -121,6 +121,8 @@ func loadPlayer() player {
 
 	character := player{name, 100, ""}
 	fmt.Println("Congratulations on creating your character!")
+	fmt.Println("")
+	fmt.Println("------------")
 	return character
 }
 
@@ -166,8 +168,6 @@ func playGame(g game) {
 			if g.currentRoom.down != nil {
 				g.currentRoom = *g.currentRoom.down
 			}
-		case "?\n":
-			fmt.Println("R = move right, L = move left, U = move up, D = move down")
 		}
 		fmt.Println("------------")
 	}
