@@ -47,24 +47,37 @@ func loadGame(character player) game {
 	two := room{2, "Two", "", nil, nil, nil, nil}
 	three := room{3, "Three", "", nil, nil, &two, nil}
 	four := room{4, "Four", "", nil, nil, &three, nil}
-	five := room{5, "Five", "", &two, nil, &one, nil}
+	five := room{5, "Five", "", &two, nil, nil, nil}
 	six := room{6, "Six", "", &three, nil, &five, nil}
 	seven := room{7, "Seven", "", &four, nil, &six, nil}
 	eight := room{8, "Eight", "", &five, nil, nil, nil}
 	nine := room{9, "Nine", "", &six, nil, &eight, nil}
 	ten := room{10, "Ten", "", &seven, nil, &nine, nil}
-	c.right = &five
-	one.right = &two
+	c := room{}
+	one.right = &five
 	one.identifier = 1
 	two.identifier = 2
+	two.right = &three
+	two.down = &five
 	three.identifier = 3
+	three.right = &four
+	three.down = &six
 	four.identifier = 4
+	four.down = &seven
 	five.identifier = 5
+	five.right = &six
+	five.down = &eight
 	six.identifier = 6
+	six.right = &seven
+	six.down = &nine
 	seven.identifier = 7
+	seven.down = &ten
 	eight.identifier = 8
+	eight.right = &nine
 	nine.identifier = 9
+	nine.right = &ten
 	ten.identifier = 10
+	c = one
 	return game{one, two, three, four, five, six, seven, eight, nine, ten, c, character, false}
 }
 
@@ -130,6 +143,8 @@ func playGame(g game) {
 			if g.currentRoom.down != nil {
 				g.currentRoom = *g.currentRoom.down
 			}
+		case "?\n":
+			fmt.Println("R = move right, L = move left, U = move up, D = move down")
 		}
 		fmt.Println("------------")
 	}
