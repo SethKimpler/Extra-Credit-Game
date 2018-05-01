@@ -40,19 +40,21 @@ type room struct {
 	down *room
 	left *room
 	right *room
+	object string
+	foe enemy
 }
 
 func loadGame(character player) game {
-	one := room{identifier: 1, name: "One", description: "", up: nil, down: nil, left: nil, right: nil}
-	two := room{2, "Two", "", nil, nil, nil, nil}
-	three := room{3, "Three", "", nil, nil, &two, nil}
-	four := room{4, "Four", "", nil, nil, &three, nil}
-	five := room{5, "Five", "", &two, nil, nil, nil}
-	six := room{6, "Six", "", &three, nil, &five, nil}
-	seven := room{7, "Seven", "", &four, nil, &six, nil}
-	eight := room{8, "Eight", "", &five, nil, nil, nil}
-	nine := room{9, "Nine", "", &six, nil, &eight, nil}
-	ten := room{10, "Ten", "", &seven, nil, &nine, nil}
+	one := room{identifier: 1, name: "One", description: "", up: nil, down: nil, left: nil, right: nil, object: "", foe: enemy{}}
+	two := room{2, "Two", "", nil, nil, nil, nil, "", enemy{}}
+	three := room{3, "Three", "", nil, nil, &two, nil, "", enemy{}}
+	four := room{4, "Four", "", nil, nil, &three, nil, "", enemy{}}
+	five := room{5, "Five", "", &two, nil, nil, nil, "", enemy{}}
+	six := room{6, "Six", "", &three, nil, &five, nil, "", enemy{}}
+	seven := room{7, "Seven", "", &four, nil, &six, nil, "", enemy{}}
+	eight := room{8, "Eight", "", &five, nil, nil, nil, "", enemy{}}
+	nine := room{9, "Nine", "", &six, nil, &eight, nil, "", enemy{}}
+	ten := room{10, "Ten", "", &seven, nil, &nine, nil, "", enemy{}}
 	c := room{}
 
 	one.identifier = 1
@@ -68,6 +70,7 @@ func loadGame(character player) game {
 	three.description = "Room three"
 	three.right = &four
 	three.down = &six
+	three.foe = enemy{"Joel Swanson", "Discrete Math Professor", "i-clicker quizzes"}
 
 	four.identifier = 4
 	four.description = "Room four"
@@ -146,6 +149,13 @@ func playGame(g game) {
 			fmt.Println("Left-" + g.currentRoom.left.name)
 		}
 		fmt.Println("")
+
+		if g.currentRoom.foe.name != "" {
+			fmt.Println("ENEMY IN ROOM! Name: " + g.currentRoom.foe.name)
+			fmt.Println("Description: " + g.currentRoom.foe.description)
+			fmt.Println("Weapon: " + g.currentRoom.foe.weapon)
+		}
+
 		fmt.Println("Use R, L, U, D to move")
 
 		fmt.Print("Enter your next move: ")
