@@ -53,7 +53,6 @@ func loadGame(character player) game {
 	eight := room{8, "Eight", "", &five, nil, nil, nil}
 	nine := room{9, "Nine", "", &six, nil, &eight, nil}
 	ten := room{10, "Ten", "", &seven, nil, &nine, nil}
-	c := one
 	c.right = &five
 	one.right = &two
 	one.identifier = 1
@@ -114,20 +113,20 @@ func playGame(g game) {
 		fmt.Print("Enter your next move: ")
 		input, _ := scanner.ReadString('\n')
 		switch input {
-		case "U":
+		case "U\n":
 			if g.currentRoom.up != nil {
 				//How do I make current room point to this?
 				g.currentRoom = *g.currentRoom.up
 			}
-		case "R":
+		case "R\n":
 			if g.currentRoom.right != nil {
 				g.currentRoom = *g.currentRoom.right
 			}
-		case "L":
+		case "L\n":
 			if g.currentRoom.left != nil {
 				g.currentRoom = *g.currentRoom.left
 			}
-		case "D":
+		case "D\n":
 			if g.currentRoom.down != nil {
 				g.currentRoom = *g.currentRoom.down
 			}
