@@ -43,17 +43,18 @@ type room struct {
 }
 
 func loadGame(character player) game {
-	one := room{1, "One", "", nil, nil, nil, nil}
+	one := room{identifier: 1, name: "One", description: "", up: nil, down: nil, left: nil, right: nil}
 	two := room{2, "Two", "", nil, nil, nil, nil}
-	three := room{3, "Three", "", nil, nil, nil, nil}
-	four := room{4, "Four", "", nil, nil, nil, nil}
-	five := room{5, "Five", "", nil, nil, nil, nil}
-	six := room{6, "Six", "", nil, nil, nil, nil}
-	seven := room{7, "Seven", "", nil, nil, nil, nil}
-	eight := room{8, "Eight", "", nil, nil, nil, nil}
-	nine := room{9, "Nine", "", nil, nil, nil, nil}
-	ten := room{10, "Ten", "", nil, nil, nil, nil}
+	three := room{3, "Three", "", nil, nil, &two, nil}
+	four := room{4, "Four", "", nil, nil, &three, nil}
+	five := room{5, "Five", "", &two, nil, &one, nil}
+	six := room{6, "Six", "", &three, nil, &five, nil}
+	seven := room{7, "Seven", "", &four, nil, &six, nil}
+	eight := room{8, "Eight", "", &five, nil, nil, nil}
+	nine := room{9, "Nine", "", &six, nil, &eight, nil}
+	ten := room{10, "Ten", "", &seven, nil, &nine, nil}
 	c := one
+	c.right = &five
 	one.right = &two
 	one.identifier = 1
 	two.identifier = 2
@@ -116,9 +117,22 @@ func playGame(g game) {
 		case "U":
 			if g.currentRoom.up != nil {
 				//How do I make current room point to this?
-				//g.currentRoom = g.currentRoom.up
+				g.currentRoom = *g.currentRoom.up
+			}
+		case "R":
+			if g.currentRoom.right != nil {
+				g.currentRoom = *g.currentRoom.right
+			}
+		case "L":
+			if g.currentRoom.left != nil {
+				g.currentRoom = *g.currentRoom.left
+			}
+		case "D":
+			if g.currentRoom.down != nil {
+				g.currentRoom = *g.currentRoom.down
 			}
 		}
+		fmt.Println("------------")
 	}
 }
 
