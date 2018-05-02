@@ -57,52 +57,52 @@ func loadGame(character player) game {
 	c := room{}
 
 	one.identifier = 1
-	one.description = "Room one"
+	one.description = "Professor Waldon's Office"
 	one.right = &five
 
 	two.identifier = 2
-	two.description = "Room two"
+	two.description = "Lobby of Anne Belk Library"
 	two.right = &three
 	two.down = &five
 	two.object = "Sheer Willpower"
 
 	three.identifier = 3
-	three.description = "Room three"
+	three.description = "1st floor of Anne Belk"
 	three.right = &four
 	three.down = &six
 	three.foe = enemy{"Joel Swanson", "Discrete Math Professor", "i-clicker quizzes"}
 
 	four.identifier = 4
-	four.description = "Room four"
+	four.description = "Bell outside of Anne Belk"
 	four.down = &seven
 	four.object = "Exception Handler"
 
 	five.identifier = 5
-	five.description = "Room five"
+	five.description = "Long, dark hallway in the second floor of Anne Belk"
 	five.right = &six
 	five.down = &eight
 
 	six.identifier = 6
-	six.description = "Room six"
+	six.description = "Sandford Mall, a vast, beatiful oasis"
 	six.right = &seven
 	six.down = &nine
 
 	seven.identifier = 7
-	seven.description = "Room seven"
+	seven.description = "Sanford building, home of all RC 1000 classes"
 	seven.down = &ten
 
 	eight.identifier = 8
-	eight.description = "Room eight"
+	eight.description = "Kidd Brewer Stadium"
 	eight.right = &nine
 	eight.foe = enemy{"Java Compiler", "Enemy of all things good", "Null-Pointer Exception"}
 
 	nine.identifier = 9
-	nine.description = "Room nine"
+	nine.description = "Varsity gym. #gainz"
 	nine.right = &ten
 	nine.object = "Quiz Master Badge"
 
 	ten.identifier = 10
-	ten.description = "Room ten"
+	ten.description = "Central Dining Hall, where you say you'll eat healthy, but we all know you're gonna get Chick-fil-a"
 	ten.foe = enemy{"Checkstyle", "Grammar Nazi", " 'file must end with new-line' "}
 
 	c = one
