@@ -273,3 +273,4 @@ func main() {
 	game := loadGame(character)
 	playGame(game)
 }
+

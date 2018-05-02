@@ -4,31 +4,59 @@ Multipiers
 Use Git/Github to manage your project (x1.25)
 Write your game in Go (x1.5) 
 
+
 Map
-1pt - basic rooms and descriptions, essentially the exact same features as the original project required. At least 10 room with names and descriptions
+1pt - basic rooms and descriptions, essentially the exact same features as the original project required. At least 10 room with names and descriptions 
+-Every move the current room's name and description is printed out.
+
 +1pt - rooms can have characters/monsters in them (you can only claim this point if it is possible to interact with them)
+-There are enemies in rooms 3, 7 and 10 with whom you can do battle
+
 +1pt - rooms can have items/objects (you can only claim this point if it is possible to interact with them)
+-There are objects in rooms 2, 4 and 8 that can be picked up and carried with you.
+
 +1pt "Map command". Only +1 point if this diagram is hard-coded.
+-Typing 'M' (as shown in directions) will display a hard-coded map.
+
 
 Characters
 +1pt - your character has a name, visual description, and commands for accessing those
+-Typing 'C' will display character's name and items he is carrying
+
 +1pt - there are other characters in the world with whom the player can interact
+-You can fight the enemies mentioned above
+
 
 Monsters
 +1pt - there are entities that are aggressive to the player. This point can only be claimed if they pose a legitimate threat. They must be able to harm the player. They may be implemented as a type of "Character" if you so choose.
+-You can fight the enemies, and if you lose, you lose health 
+
 
 Combat
 1pt - if the player has the ability to fight using simple mechanics like random numbers to see whether they win
+-My fighting is completely dependant on the tool you use, so whether you chose +1 or +2 points is fair.
 2pts - if the player has multiple options/strategies available that make combat interesting and dynamic
+
 +1pt - if the player gains/loses something from fighting. Maybe their weapons get closer to breaking but they gain money/experience/etc...?
+-You must defeat all three enemies to win.
+
 
 Objects
 1pt - There are objects in the world that can be picked up, dropped, and used.
+-Objects in rooms 2, 4 and 8 can be carried one at a time
+
 
 Gameplay
 1pt - Game has an end, preferably a "win" and "lose" condition.
+-Defeating all three enemies will win the game. If your health reaches 0, you lose.
+
 
 Plot
 1pt - player has a definite goal that is explained at the beginning and that they can achieve
+-Plot is described at beginning after creating character. 
+
 2pts - player has a definite goal with antagonists and allies (monsters and friendly characters) that can help or hinder them.
+-The goal is to defeat all the enemies. Enemies can hurt the player if they lose. 
+
 +2pts - player has branching choices leading to different outcomes for both themselves and their friends/enemies
+-Depending on where you move and what you do, you could either beat the enemies . . . or die trying

@@ -1,0 +1,14 @@
+To run the game, from the src/game directory type 'go run game.go'. 
+This will begin running the game. You will be prompted for a character name.
+Upon successfully choosing a name, the prompt will be displayed. (Basically saying defeat the enemies)
+The controls are displayed each turn, but are as follows:
+R - move right
+L - move left
+U - move up
+D - move down
+C - display character name and tool
+F - fight enemy (if enemy is present)
+
+Cheat code:
+quickest way to win the game is as follows :
+R R D P U U F Y R P D D L L F Y U U P D D R R F Y
