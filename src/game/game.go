@@ -17,7 +17,6 @@ type game struct {
 	ten room
 	currentRoom room
 	currentPlayer player
-	win bool
 }
 
 type player struct {
@@ -107,7 +106,7 @@ func loadGame(character player) game {
 	ten.foe = enemy{"Checkstyle", "Grammar Nazi", " 'file must end with new-line' "}
 
 	c = one
-	return game{one, two, three, four, five, six, seven, eight, nine, ten, c, character, false}
+	return game{one, two, three, four, five, six, seven, eight, nine, ten, c, character}
 }
 
 func loadPlayer() player {
@@ -147,7 +146,7 @@ func printMap() {
 
 func playGame(g game) {
 	scanner := bufio.NewReader(os.Stdin)
-	for g.win == false {
+	for true {
 		fmt.Println("Current Room: " + g.currentRoom.name)
 		fmt.Println("Description: " + g.currentRoom.description)
 		fmt.Println("Tools in room: " + g.currentRoom.object)
@@ -177,7 +176,7 @@ func playGame(g game) {
 
 		fmt.Println("Use R, L, U, D to move")
 		fmt.Println("Use F to fight (if enemy is present)")
-		fmt.Println("Use P to pick-up object and M to display map")
+		fmt.Println("Use P to pick-up object, M to display map \n and C to display your character's attributes")
 
 		fmt.Print("Enter your next move: ")
 		input, _ := scanner.ReadString('\n')
@@ -205,6 +204,11 @@ func playGame(g game) {
 				g.currentPlayer.tool = g.currentRoom.object
 				g.currentRoom.object = ""
 			}
+		case "C\n":
+			fmt.Println("")
+			fmt.Print("Name: " + g.currentPlayer.name)
+			fmt.Print("Health: ")
+			fmt.Println(g.currentPlayer.health)
 		case "F\n":
 			if g.currentPlayer.tool == "" {
 				fmt.Println("You have no tool, are you sure you would like to fight?")
