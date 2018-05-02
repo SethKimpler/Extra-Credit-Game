@@ -93,6 +93,7 @@ func loadGame(character player) game {
 	eight.identifier = 8
 	eight.description = "Room eight"
 	eight.right = &nine
+	eight.foe = enemy{"Java Compiler", "Enemy of all things good", "Null-Pointer Exception"}
 
 	nine.identifier = 9
 	nine.description = "Room nine"
@@ -100,6 +101,8 @@ func loadGame(character player) game {
 
 	ten.identifier = 10
 	ten.description = "Room ten"
+	ten.foe = enemy{"Checkstyle", "Grammar Nazi", " 'file must end with new-line' "}
+
 	c = one
 	return game{one, two, three, four, five, six, seven, eight, nine, ten, c, character, false}
 }
@@ -161,7 +164,8 @@ func playGame(g game) {
 		fmt.Println("")
 
 		if g.currentRoom.foe.name != "" {
-			fmt.Println("ENEMY IN ROOM! Name: " + g.currentRoom.foe.name)
+			fmt.Println("ENEMY IN ROOM!")
+			fmt.Println("Name: " + g.currentRoom.foe.name)
 			fmt.Println("Description: " + g.currentRoom.foe.description)
 			fmt.Println("Weapon: " + g.currentRoom.foe.weapon)
 			fmt.Println("")
