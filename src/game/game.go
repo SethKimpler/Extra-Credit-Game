@@ -65,6 +65,7 @@ func loadGame(character player) game {
 	two.description = "Room two"
 	two.right = &three
 	two.down = &five
+	two.object = "Sheer Willpower"
 
 	three.identifier = 3
 	three.description = "Room three"
@@ -75,6 +76,7 @@ func loadGame(character player) game {
 	four.identifier = 4
 	four.description = "Room four"
 	four.down = &seven
+	four.object = "Exception Handler"
 
 	five.identifier = 5
 	five.description = "Room five"
@@ -98,6 +100,7 @@ func loadGame(character player) game {
 	nine.identifier = 9
 	nine.description = "Room nine"
 	nine.right = &ten
+	nine.object = "Quiz Master Badge"
 
 	ten.identifier = 10
 	ten.description = "Room ten"
@@ -147,6 +150,7 @@ func playGame(g game) {
 	for g.win == false {
 		fmt.Println("Current Room: " + g.currentRoom.name)
 		fmt.Println("Description: " + g.currentRoom.description)
+		fmt.Println("Tools in room: " + g.currentRoom.object)
 		fmt.Println("")
 		fmt.Println("Exits: ")
 		if g.currentRoom.up != nil {
@@ -199,8 +203,56 @@ func playGame(g game) {
 		case "P\n":
 			if g.currentRoom.object != "" {
 				g.currentPlayer.tool = g.currentRoom.object
+				g.currentRoom.object = ""
+			}
+		case "F\n":
+			if g.currentPlayer.tool == "" {
+				fmt.Println("You have no tool, are you sure you would like to fight?")
+			} else {
+				fmt.Println("Are you sure you want to fight " + g.currentRoom.foe.name + " with " + g.currentPlayer.tool + "?")
+			}
+			fmt.Println("Enter Y or N")
+			answer, _ := scanner.ReadString('\n')
+			if answer == "Y\n" {
+				switch g.currentRoom.foe.name {
+				case "Joel Swanson":
+					if g.currentPlayer.tool == "Quiz Master Badge" {
+						fmt.Println("VICTORY!")
+						g.three.foe.name = ""
+					} else {
+						fmt.Println("DEFEAT!")
+						g.currentPlayer.health -= 34
+					}
+				case "Java Compiler":
+					if g.currentPlayer.tool == "Exception Handler" {
+						fmt.Println("VICTORY!")
+						g.eight.foe.name = ""
+					} else {
+						fmt.Println("DEFEAT!")
+						g.currentPlayer.health -= 34
+					}
+				case "Checkstyle":
+					if g.currentPlayer.tool == "Sheer Willpower" {
+						fmt.Println("VICTORY (somehow)!")
+						g.ten.foe.name = ""
+					} else {
+						fmt.Println("DEFEAT!")
+						g.currentPlayer.health -= 34
+					}
+				}
 			}
 		}
+
+		if g.three.foe.name == "" && g.eight.foe.name == "" && g.ten.foe.name == "" {
+			fmt.Println("CONGRATULATIONS!!! You have beaten 'Waldon's World'!!!")
+			break
+		}
+
+		if g.currentPlayer.health < 0 {
+			fmt.Println("Your player has died... \nDEFEAT")
+			break
+		}
+		fmt.Println("")
 		fmt.Println("------------")
 	}
 }
