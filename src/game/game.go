@@ -202,7 +202,7 @@ func playGame(g game) {
 }
 
 func main() {
-	fmt.Println("\n")
+	fmt.Println("\n\n")
 	character := loadPlayer()
 	game := loadGame(character)
 	playGame(game)
