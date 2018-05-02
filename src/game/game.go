@@ -129,6 +129,16 @@ func loadPlayer() player {
 	return character
 }
 
+func printMap() {
+	fmt.Println("")
+	fmt.Println("    2 - 3 - 4")
+	fmt.Println("    |   |   |")
+	fmt.Println("1 - 5 - 6 - 7")
+	fmt.Println("    |   |   |")
+	fmt.Println("    8 - 9 -10")
+	fmt.Println("")
+}
+
 func playGame(g game) {
 	scanner := bufio.NewReader(os.Stdin)
 	for g.win == false {
@@ -137,16 +147,16 @@ func playGame(g game) {
 		fmt.Println("")
 		fmt.Println("Exits: ")
 		if g.currentRoom.up != nil {
-			fmt.Println("Up-" + g.currentRoom.up.name)
+			fmt.Println("Direction: Up / Name: " + g.currentRoom.up.name)
 		}
 		if g.currentRoom.right != nil {
-			fmt.Println("Right-" + g.currentRoom.right.name)
+			fmt.Println("Direction: Right / Name: " + g.currentRoom.right.name)
 		}
 		if g.currentRoom.down != nil {
-			fmt.Println("Down-" + g.currentRoom.down.name)
+			fmt.Println("Direction: Down / Name: " + g.currentRoom.down.name)
 		}
 		if g.currentRoom.left != nil {
-			fmt.Println("Left-" + g.currentRoom.left.name)
+			fmt.Println("Direction: Left / Name: " + g.currentRoom.left.name)
 		}
 		fmt.Println("")
 
@@ -154,16 +164,18 @@ func playGame(g game) {
 			fmt.Println("ENEMY IN ROOM! Name: " + g.currentRoom.foe.name)
 			fmt.Println("Description: " + g.currentRoom.foe.description)
 			fmt.Println("Weapon: " + g.currentRoom.foe.weapon)
+			fmt.Println("")
 		}
 
 		fmt.Println("Use R, L, U, D to move")
+		fmt.Println("Use F to fight (if enemy is present)")
+		fmt.Println("Use P to pick-up object and M to display map")
 
 		fmt.Print("Enter your next move: ")
 		input, _ := scanner.ReadString('\n')
 		switch input {
 		case "U\n":
 			if g.currentRoom.up != nil {
-				//How do I make current room point to this?
 				g.currentRoom = *g.currentRoom.up
 			}
 		case "R\n":
@@ -177,6 +189,12 @@ func playGame(g game) {
 		case "D\n":
 			if g.currentRoom.down != nil {
 				g.currentRoom = *g.currentRoom.down
+			}
+		case "M\n":
+			printMap()
+		case "P\n":
+			if g.currentRoom.object != "" {
+				g.currentPlayer.tool = g.currentRoom.object
 			}
 		}
 		fmt.Println("------------")
