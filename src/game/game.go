@@ -266,7 +266,7 @@ func main() {
 	character := loadPlayer()
 	fmt.Print("The Appalachian State campus needs your help! ")
 	fmt.Print("The Java-bot and Rogue Professors have taken over, and it is your job to save us! ")
-	fmt.Print("By searching around campus, you will be able to find \n various tools that you can use to help free the campus! ")
+	fmt.Print("By searching around campus, you will be able to find various tools that you can use to help free the campus! ")
 	fmt.Print("But be wary, these enemies will be hiding where you lease expect it. ")
 	fmt.Print("Use your tools against the enemy they are best suited for, and you can defeat them. ")
 	fmt.Println("Defeat each enemy, and you will be remembered as a hero! Good Luck, and may the compiler be ever in your favor! ")

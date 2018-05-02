@@ -1,0 +1,34 @@
+These are the points I'm going for. Some of them are up to interpretation whether they should really count or not, but I included them anyways. My GitHub name is 'SethKimpler', and I put this in the 'Extra-Credit-Game' repository. 
+
+Multipiers
+Use Git/Github to manage your project (x1.25)
+Write your game in Go (x1.5) 
+
+Map
+1pt - basic rooms and descriptions, essentially the exact same features as the original project required. At least 10 room with names and descriptions
++1pt - rooms can have characters/monsters in them (you can only claim this point if it is possible to interact with them)
++1pt - rooms can have items/objects (you can only claim this point if it is possible to interact with them)
++1pt "Map command". Only +1 point if this diagram is hard-coded.
+
+Characters
++1pt - your character has a name, visual description, and commands for accessing those
++1pt - there are other characters in the world with whom the player can interact
+
+Monsters
++1pt - there are entities that are aggressive to the player. This point can only be claimed if they pose a legitimate threat. They must be able to harm the player. They may be implemented as a type of "Character" if you so choose.
+
+Combat
+1pt - if the player has the ability to fight using simple mechanics like random numbers to see whether they win
+2pts - if the player has multiple options/strategies available that make combat interesting and dynamic
++1pt - if the player gains/loses something from fighting. Maybe their weapons get closer to breaking but they gain money/experience/etc...?
+
+Objects
+1pt - There are objects in the world that can be picked up, dropped, and used.
+
+Gameplay
+1pt - Game has an end, preferably a "win" and "lose" condition.
+
+Plot
+1pt - player has a definite goal that is explained at the beginning and that they can achieve
+2pts - player has a definite goal with antagonists and allies (monsters and friendly characters) that can help or hinder them.
++2pts - player has branching choices leading to different outcomes for both themselves and their friends/enemies
